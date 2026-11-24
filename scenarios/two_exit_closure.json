@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "id": "two_exit_closure",
+  "layout": {
+    "id": "two_exit",
+    "version": 1,
+    "walkable": {
+      "outer": [
+        [0, 0], [30, 0], [30, 4], [12, 4], [12, 6], [28, 6],
+        [28, 20], [2, 20], [2, 6], [10, 6], [10, 4], [0, 4]
+      ]
+    },
+    "nodes": [
+      {"id": "door", "position": [11, 7], "zone": [[8, 6], [14, 6], [14, 9], [8, 9]]},
+      {"id": "junction", "position": [11, 2], "zone": [[9.5, 0], [12.5, 0], [12.5, 4], [9.5, 4]]}
+    ],
+    "exits": [
+      {
+        "id": "exit_a",
+        "position": [3, 2],
+        "zone": [[1, 0], [5, 0], [5, 4], [1, 4]],
+        "polygon": [[0, 0], [1, 0], [1, 4], [0, 4]]
+      },
+      {
+        "id": "exit_b",
+        "position": [27, 2],
+        "zone": [[25, 0], [29, 0], [29, 4], [25, 4]],
+        "polygon": [[29, 0], [30, 0], [30, 4], [29, 4]]
+      }
+    ],
+    "edges": [
+      {"id": "door_to_junction", "source": "door", "target": "junction"},
+      {"id": "junction_to_a", "source": "junction", "target": "exit_a"},
+      {"id": "junction_to_b", "source": "junction", "target": "exit_b"},
+      {"id": "a_to_junction", "source": "exit_a", "target": "junction"},
+      {"id": "b_to_junction", "source": "exit_b", "target": "junction"}
+    ]
+  },
+  "spawns": [
+    {"id": "room", "polygon": [[2, 9], [28, 9], [28, 20], [2, 20]], "count": 50, "target": "door"}
+  ],
+  "speed": {"mean": 1.34, "sd": 0.26, "minimum": 0.5, "maximum": 2.0},
+  "horizon": 180,
+  "dt": 0.01,
+  "exit_events": [
+    {"time": 15, "exit": "exit_a", "open": false},
+    {"time": 60, "exit": "exit_a", "open": true}
+  ]
+}

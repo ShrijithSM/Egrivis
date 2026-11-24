@@ -1,0 +1,6 @@
+runs/
+.venv/
+__pycache__/
+.pytest_cache/
+# Report contains personal details; keep it out of the shared repo.
+doc/
